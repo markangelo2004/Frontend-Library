@@ -1,0 +1,73 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global Background */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-image: url('/src/assets/image/HM1.jpg'); /* ← Replace image path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Keeps background static */
+  min-height: 100vh;
+}
+
+/* App Wrapper */
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}
+
+/* Optional overlay effect (remove if not needed) */
+.App::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+
+/* Main content */
+.main-content {
+  flex: 1;
+  padding: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 10px;
+  }
+}
+
+/* FIXED NAVBAR */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* stay on top */
+  background: rgba(255, 255, 255, 0.8); /* semi-transparent */
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px); /* glass effect */
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  padding: 15px 20px;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  margin-top: 80px; /* adjust height based on navbar size */
+  position: relative;
+  z-index: 1;
+}
