@@ -101,7 +101,7 @@ const Dashboard = ({ onAddBook, onAddMember, onAddLoan }) => {
 
   return (
     <div className="dashboard">
-      <h1>📚 Library Dashboard</h1>
+      <h1>Library Dashboard</h1>
 
       {loading ? (
         <div className="loading-dashboard">
@@ -113,35 +113,35 @@ const Dashboard = ({ onAddBook, onAddMember, onAddLoan }) => {
           {/* ---------- STATISTICS ---------- */}
           <div className="stats-grid">
             <div className="stat-card">
-              <div className="stat-icon">📖</div>
+              <div className="stat-icon"></div>
               <h3>Total Books</h3>
               <p className="stat-number">{stats.totalBooks}</p>
               <p className="stat-desc">Books in library</p>
             </div>
 
             <div className="stat-card">
-              <div className="stat-icon">👥</div>
+              <div className="stat-icon"></div>
               <h3>Total Members</h3>
               <p className="stat-number">{stats.totalMembers}</p>
               <p className="stat-desc">Registered members</p>
             </div>
 
             <div className="stat-card">
-              <div className="stat-icon">📚</div>
+              <div className="stat-icon"></div>
               <h3>Active Loans</h3>
               <p className="stat-number">{stats.activeLoans}</p>
               <p className="stat-desc">Books currently loaned</p>
             </div>
 
             <div className="stat-card">
-              <div className="stat-icon">⚠️</div>
+              <div className="stat-icon"></div>
               <h3>Overdue Loans</h3>
               <p className="stat-number">{stats.overdueLoans}</p>
               <p className="stat-desc">Past‑due loans</p>
             </div>
 
             <div className="stat-card">
-              <div className="stat-icon">💻</div>
+              <div className="stat-icon"></div>
               <h3>API Status</h3>
               <p
                 className={`stat-number ${
@@ -156,7 +156,7 @@ const Dashboard = ({ onAddBook, onAddMember, onAddLoan }) => {
 
           {/* ---------- QUICK ACTIONS ---------- */}
           <div className="quick-actions">
-            <h2>⚡ Quick Actions</h2>
+            <h2>Quick Actions</h2>
             <div className="action-buttons">
               <button className="btn btn-primary" onClick={handleAddBook}>
                 <span className="btn-icon">➕</span> Add New Book

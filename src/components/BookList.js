@@ -17,28 +17,27 @@ const BookList = ({ onAddBook, onEditBook, refreshKey }) => {
    *  FETCH BOOKS – re‑run when page, searchTerm OR refreshKey changes
    * ------------------------------------------------------------ */
   useEffect(() => {
+    const fetchBooks = async () => {
+      try {
+        setLoading(true);
+        const response = await bookAPI.getAllBooks(currentPage, 10);
+        if (response.data.success) {
+          setBooks(response.data.data);
+          setTotalPages(response.data.pagination?.pages || 1);
+        }
+      } catch (err) {
+        setError(err.response?.data?.message || 'Failed to fetch books');
+      } finally {
+        setLoading(false);
+      }
+    };
     fetchBooks();
   }, [currentPage, searchTerm, refreshKey]);
-
-  const fetchBooks = async () => {
-    try {
-      setLoading(true);
-      const response = await bookAPI.getAllBooks(currentPage, 10);
-      if (response.data.success) {
-        setBooks(response.data.data);
-        setTotalPages(response.data.pagination?.pages || 1);
-      }
-    } catch (err) {
-      setError(err.response?.data?.message || 'Failed to fetch books');
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const handleDelete = async (id) => {
     try {
       await bookAPI.deleteBook(id);
-      fetchBooks();
+      setCurrentPage(1); // This will trigger fetchBooks via useEffect
       setShowDeleteModal(false);
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to delete book');

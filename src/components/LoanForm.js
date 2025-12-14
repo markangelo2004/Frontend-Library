@@ -11,8 +11,6 @@ const LoanForm = ({ loan = null, onClose, onSuccess }) => {
     dueAt: '',
   });
   
-  const [books, setBooks] = useState([]);
-  const [members, setMembers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const [errorMessage, setErrorMessage] = useState('');
