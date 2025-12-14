@@ -1,73 +1,693 @@
+/* ==============================================================
+   Existing global / base styles – (unchanged)
+   ============================================================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
-/* Global Background */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-image: url('/src/assets/image/HM.jpg'); /* ← Replace image path */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed; /* Keeps background static */
-  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f5f5f5;
 }
-
-/* App Wrapper */
-.App {
+.app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  position: relative;
-  z-index: 1;
 }
-
-/* Optional overlay effect (remove if not needed) */
-.App::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  z-index: -1;
-}
-
-/* Main content */
 .main-content {
   flex: 1;
   padding: 20px;
-  position: relative;
-  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .main-content {
-    padding: 10px;
-  }
+/* --------------------------------------------------------------
+   Navigation
+   -------------------------------------------------------------- */
+.navbar {
+  background: linear-gradient(135deg, #800000 0%, #660000 100%);
+  color: white;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.nav-icon {
+  font-size: 1.8rem;
+}
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+.nav-link:hover,
+.nav-link.active {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+.nav-link-icon {
+  font-size: 1.2rem;
+}
+.nav-actions .btn {
+  background: white;
+  color: #800000;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.2s;
+}
+.nav-actions .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* FIXED NAVBAR */
-nav {
+/* --------------------------------------------------------------
+   Buttons (global)
+   -------------------------------------------------------------- */
+.btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-icon {
+  font-size: 0.9rem;
+}
+.btn-primary {
+  background: linear-gradient(135deg, #800000 0%, #cb0000 100%);  
+  color: white;
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, #800000 0%, #cd0202 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(133, 6, 28, 0.4);
+}
+.btn-secondary {
+  background: #6c757d;
+  color: white;
+}
+.btn-secondary:hover {
+  background: #5a6268;
+  transform: translateY(-2px);
+}
+.btn-success {
+  background: #28a745;
+  color: white;
+}
+.btn-success:hover {
+  background: #218838;
+  transform: translateY(-2px);
+}
+.btn-danger {
+  background: #dc3545;
+  color: white;
+}
+.btn-danger:hover {
+  background: #c82333;
+  transform: translateY(-2px);
+}
+.btn-edit {
+  background: #17a2b8;
+  color: white;
+}
+.btn-edit:hover {
+  background: #138496;
+}
+.btn-delete {
+  background: #dc3545;
+  color: white;
+}
+.btn-delete:hover {
+  background: #c82333;
+}
+
+/* --------------------------------------------------------------
+   Forms
+   -------------------------------------------------------------- */
+.form-container {
+  background: white;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 2rem auto;
+}
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e9ecef;
+}
+.form-group {
+  margin-bottom: 1.5rem;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #495057;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+.input-error {
+  border-color: #dc3545 !important;
+}
+.error-text {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+.error-message {
+  background: #f8d7da;
+  color: #721c24;
+  padding: 0.75rem;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  border: 1px solid #f5c6cb;
+}
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+/* --------------------------------------------------------------
+   Tables
+   -------------------------------------------------------------- */
+.table-container {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  margin: 1rem 0;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 650px;               /* keep a minimum width for desktop */
+}
+.table th {
+  background: linear-gradient(135deg, #800000 0%, #cb0000 100%);
+  color: white;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+}
+.table td {
+  padding: 1rem;
+  border-bottom: 1px solid #e9ecef;
+}
+.table tr:hover {
+  background-color: #f8f9fa;
+}
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+/* --------------------------------------------------------------
+   Modals
+   -------------------------------------------------------------- */
+.modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  z-index: 1000; /* stay on top */
-  background: rgba(255, 255, 255, 0.8); /* semi-transparent */
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px); /* glass effect */
-  border-bottom: 1px solid rgba(0,0,0,0.1);
-  padding: 15px 20px;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.modal {
+  background: white;
+  border-radius: 10px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+.modal h3 {
+  margin-bottom: 1rem;
+  color: #495057;
+}
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
 }
 
-.main-content {
-  flex: 1;
-  padding: 20px;
-  margin-top: 80px; /* adjust height based on navbar size */
-  position: relative;
-  z-index: 1;
+/* --------------------------------------------------------------
+   Badges
+   -------------------------------------------------------------- */
+.badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: inline-block;
 }
+.badge-available { background: #d4edda; color: #155724; }
+.badge-unavailable { background: #f8d7da; color: #721c24; }
+.badge-returned { background: #d4edda; color: #155724; }
+.badge-overdue { background: #fff3cd; color: #856404; }
+.badge-active { background: #d1ecf1; color: #0c5460; }
+
+/* --------------------------------------------------------------
+   Dashboard
+   -------------------------------------------------------------- */
+.dashboard {
+  padding: 2rem;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+.stat-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 1rem 0;
+  color: #800000;
+}
+.stat-desc {
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+.status-healthy { color: #28a745 !important; }
+.status-unhealthy { color: #dc3545 !important; }
+.quick-actions {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  margin-top: 2rem;
+}
+.quick-actions h2 { margin-bottom: 1rem; color: #495057; }
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* --------------------------------------------------------------
+   Loading
+   -------------------------------------------------------------- */
+.loading {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.2rem;
+  color: #6c757d;
+}
+
+/* --------------------------------------------------------------
+   Member / Loan Cards
+   -------------------------------------------------------------- */
+.member-card,
+.loan-card {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+.member-card:hover,
+.loan-card:hover {
+  transform: translateY(-5px);
+}
+.member-avatar {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #800000 0%, #764ba2 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  margin-right: 1rem;
+}
+.member-info h3 { margin-bottom: 0.5rem; color: #495057; }
+.member-email,
+.member-joined {
+  color: #6c757d;
+  margin: 0.25rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.member-id {
+  font-size: 0.8rem;
+  color: #adb5bd;
+  margin-top: 0.5rem;
+}
+.member-actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Loan‑card specifics */
+.loan-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e9ecef;
+}
+.loan-id {
+  font-size: 0.8rem;
+  color: #adb5bd;
+}
+.loan-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.loan-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.loan-icon {
+  color: #800000;
+  font-size: 1.2rem;
+  margin-top: 0.25rem;
+}
+.loan-item strong { display: block; margin-bottom: 0.25rem; color: #495057; }
+.loan-item p { margin: 0; color: #6c757d; }
+.loan-dates {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.loan-actions {
+  margin-top: 1rem;
+  text-align: right;
+}
+.text-danger { color: #dc3545; }
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+.page-info {
+  font-weight: 600;
+  color: #495057;
+}
+
+/* Search Bar */
+.search-bar {
+  background: white;
+  padding: 1rem;
+  border-radius: 10px;
+  margin: 1rem 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.search-bar input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+.search-input { position: relative; }
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6c757d;
+}
+.search-bar input { padding-left: 3rem; }
+
+/* --------------------------------------------------------------
+   LoanForm – specific
+   -------------------------------------------------------------- */
+.loan-form-container {
+  background: white;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  width: 100%;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.form-icon { margin-right: 0.5rem; color: #667eea; }
+.form-text { color: #6c757d; font-size: 0.875rem; margin-top: 0.25rem; }
+.warning-message {
+  background: #fff3cd;
+  color: #856404;
+  padding: 0.75rem;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  border: 1px solid #ffeaa7;
+}
+
+/* --------------------------------------------------------------
+   Additional Form select styling (you already had this)
+   -------------------------------------------------------------- */
+.form-group select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: white;
+  cursor: pointer;
+}
+.form-group select:focus {
+  outline: none;
+  border-color: #800000;
+  box-shadow: 0 0 0 3px rgba(133, 6, 28, 0.1);
+}
+.form-group option { padding: 0.5rem; }
+
+/* ==============================================================
+   RESPONSIVE SECTION (mobile first)
+   ============================================================== */
+
+/* ---------- General breakpoints ---------- */
+@media (max-width: 992px) {
+  .nav-container { flex-direction: column; gap: 1rem; }
+  .nav-links { gap: 1rem; }
+}
+
+/* ---------- Mobile navigation (hamburger) ----------
+   Add a tiny JS toggle that adds/removes the class `mobile-open`
+   on .nav-links when the button below is clicked. */
+@media (max-width: 768px) {
+  /* hide the regular links, show a menu button */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: rgba(177, 1, 7, 0.95);
+    border-radius: 8px;
+    padding: 1rem 0;
+    margin-top: 0.5rem;
+  }
+  .nav-links.mobile-open { display: flex; }
+
+  .nav-actions { margin-left: auto; }
+
+  .mobile-menu-btn {
+    display: inline-flex;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem;
+  }
+
+  /* Ensure the brand stays on the left */
+  .nav-brand { flex: 1; }
+
+  /* Reduce spacing on the navbar */
+  .navbar { padding: 1rem; }
+}
+
+/* ---------- Dashboard / Stats ----------
+   Stack everything in a single column on small phones */
+@media (max-width: 768px) {
+  .stats-grid { grid-template-columns: 1fr; }
+  .quick-actions .action-buttons { flex-direction: column; }
+  .quick-actions .action-buttons .btn { width: 100%; }
+}
+
+/* ---------- Tables ----------
+   Make them horizontally scrollable on small screens */
+@media (max-width: 768px) {
+  .table-container {
+    overflow-x: auto;
+  }
+  .table {
+    min-width: 600px;           /* keep columns readable */
+    font-size: 0.85rem;
+  }
+  .table th,
+  .table td {
+    padding: 0.75rem;
+  }
+}
+
+/* ---------- Cards ----------
+   Switch from side‑by‑side avatar + info to stacked layout */
+@media (max-width: 768px) {
+  .member-card,
+  .loan-card {
+    padding: 1rem;
+  }
+  .member-avatar {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+    margin: 0 auto 0.75rem;
+  }
+  .member-info,
+  .member-actions {
+    text-align: center;
+  }
+  .member-actions { flex-direction: column; gap: 0.5rem; }
+}
+
+/* ---------- Forms ----------
+   Reduce paddings, make inputs full width */
+@media (max-width: 768px) {
+  .form-container,
+  .modal {
+    padding: 1.5rem;
+    max-width: 95%;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-size: 0.95rem;
+  }
+}
+
+/* ---------- LoanForm (2‑column) ----------
+   Collapse to a single column on phones */
+@media (max-width: 768px) {
+  .form-row { grid-template-columns: 1fr; }
+}
+
+/* ---------- Pagination ----------
+   Center and stretch buttons on tiny screens */
+@media (max-width: 576px) {
+  .pagination {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .pagination .btn {
+    width: 100%;
+  }
+}
+
+/* ---------- Extra tiny screens (≤480px) ----------
+   Slightly shrink text and gaps */
+@media (max-width: 480px) {
+  body { font-size: 0.95rem; }
+  .navbar { padding: 0.75rem 1rem; }
+  .nav-brand { font-size: 1.2rem; }
+  .nav-icon { font-size: 1.5rem; }
+  .nav-link { font-size: 0.9rem; padding: 0.4rem 0.8rem; }
+  .nav-actions .btn { font-size: 0.85rem; padding: 0.4rem 0.8rem; }
+  .btn { font-size: 0.8rem; padding: 0.4rem 0.8rem; }
+  .stat-number { font-size: 2rem; }
+  .stat-card { padding: 1rem; }
+  .quick-actions { padding: 1rem; }
+  .action-buttons .btn { font-size: 0.85rem; }
+  .member-card,
+  .loan-card { padding: 0.75rem; }
+  .member-avatar { width: 45px; height: 45px; font-size: 1rem; }
+}
+
+/* ==============================================================
+   END OF FILE
+   ============================================================== */
