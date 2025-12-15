@@ -39,7 +39,7 @@
 .loan-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-  border-color: #1003a4;
+  border-color: #122a4b;
 }
 
 .loan-card-header {
@@ -76,7 +76,7 @@
 }
 
 .loan-icon {
-  color: #1003a4;
+  color: #122a4b;
   font-size: 1.1rem;
   margin-top: 0.2rem;
   flex-shrink: 0;
@@ -143,8 +143,8 @@
 
 .badge-active {
   background: linear-gradient(135deg, #d1ecf1 0%, #bee5eb 100%);
-  color: #1003a4;
-  border: 1px solid #1003a4;
+  color: #122a4b;
+  border: 1px solid #122a4b;
 }
 
 .text-danger {
@@ -191,7 +191,7 @@
 
 .loan-form-container .form-icon {
   margin-right: 0.5rem;
-  color: #1003a4;
+  color: #122a4b;
 }
 
 .loan-form-container .form-text {
@@ -213,7 +213,7 @@
 
 .loan-form-container select:focus {
   outline: none;
-  border-color: #1003a4;
+  border-color: #122a4b;
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 

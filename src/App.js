@@ -25,7 +25,6 @@ const Dashboard = ({ onAddBook, onAddMember, onAddLoan }) => {
     activeLoans: 0,
     overdueLoans: 0,
   });
-  const [healthStatus, setHealthStatus] = useState('checking...');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -71,10 +70,9 @@ const Dashboard = ({ onAddBook, onAddMember, onAddLoan }) => {
   /* ---------- health check ---------- */
   const checkAPIStatus = async () => {
     try {
-      const response = await checkAPIHealth();
-      if (response.data.success) setHealthStatus('healthy');
+      await checkAPIHealth();
     } catch (_) {
-      setHealthStatus('unavailable');
+      // API health check failed, but we continue anyway
     }
   };
 
@@ -138,19 +136,6 @@ const Dashboard = ({ onAddBook, onAddMember, onAddLoan }) => {
               <h3>Overdue Loans</h3>
               <p className="stat-number">{stats.overdueLoans}</p>
               <p className="stat-desc">Past‑due loans</p>
-            </div>
-
-            <div className="stat-card">
-              <div className="stat-icon"></div>
-              <h3>API Status</h3>
-              <p
-                className={`stat-number ${
-                  healthStatus === 'healthy' ? 'status-healthy' : 'status-unhealthy'
-                }`}
-              >
-                {healthStatus === 'healthy' ? '✅ Healthy' : '❌ Unavailable'}
-              </p>
-              <p className="stat-desc">Backend connection</p>
             </div>
           </div>
 
@@ -321,6 +306,14 @@ function App() {
             />
           </Routes>
         </main>
+        <footer className="app-footer">
+          <div className="footer-content">
+            <p>© {new Date().getFullYear()} Library Management System</p>
+            <p className="footer-subtext">
+              React · REST API · Secure Library Platform
+            </p>
+          </div>
+        </footer>
       </div>
     </Router>
   );
